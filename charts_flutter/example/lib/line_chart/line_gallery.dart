@@ -28,6 +28,7 @@ import 'simple_nulls.dart';
 import 'stacked_area.dart';
 import 'stacked_area_custom_color.dart';
 import 'stacked_area_nulls.dart';
+import 'smooth.dart';
 
 List<GalleryScaffold> buildGallery() {
   return [
@@ -36,6 +37,13 @@ List<GalleryScaffold> buildGallery() {
       title: 'Simple Line Chart',
       subtitle: 'With a single series and default line point highlighter',
       childBuilder: () => new SimpleLineChart.withRandomData(),
+    ),
+    new GalleryScaffold(
+      listTileIcon: new Icon(Icons.show_chart),
+      title: 'Smooth Line Chart',
+      subtitle:
+          'With a single series and smooth line and default line point highlighter',
+      childBuilder: () => new SmoothLineChart.withRandomData(),
     ),
     new GalleryScaffold(
       listTileIcon: new Icon(Icons.show_chart),

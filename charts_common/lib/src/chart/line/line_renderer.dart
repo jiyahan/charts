@@ -975,12 +975,10 @@ class LineRenderer<D> extends BaseCartesianRenderer<D> {
             .map<_AreaRendererElement<D>>((_AnimatedArea<D> animatingBounds) =>
                 animatingBounds.getCurrentArea(animationPercent))
             .forEach((bound) {
-          if (bound != null) {
-            canvas.drawPolygon(
-                clipBounds: _getClipBoundsForExtent(bound.positionExtent),
-                fill: bound.areaColor ?? bound.color,
-                points: bound.points.toPoints());
-          }
+          canvas.drawPolygon(
+              clipBounds: _getClipBoundsForExtent(bound.positionExtent),
+              fill: bound.areaColor ?? bound.color,
+              points: bound.points.toPoints());
         });
       }
 
@@ -993,15 +991,14 @@ class LineRenderer<D> extends BaseCartesianRenderer<D> {
             .map<_LineRendererElement<D>>((_AnimatedLine<D> animatingLine) =>
                 animatingLine.getCurrentLine(animationPercent))
             .forEach((line) {
-          if (line != null) {
-            canvas.drawLine(
-                clipBounds: _getClipBoundsForExtent(line.positionExtent!),
-                dashPattern: line.dashPattern,
-                points: line.points!.toPoints(),
-                stroke: line.color,
-                strokeWidthPx: line.strokeWidthPx,
-                roundEndCaps: line.roundEndCaps);
-          }
+          canvas.drawLine(
+              clipBounds: _getClipBoundsForExtent(line.positionExtent!),
+              dashPattern: line.dashPattern,
+              points: line.points!.toPoints(),
+              stroke: line.color,
+              smoothLine: config.smoothLine,
+              strokeWidthPx: line.strokeWidthPx,
+              roundEndCaps: line.roundEndCaps);
         });
       }
     });
