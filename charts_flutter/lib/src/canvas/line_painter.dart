@@ -98,7 +98,10 @@ class LinePainter {
 
   /// Draws smooth lines between each point.
   static void _drawSmoothLine(Canvas canvas, Paint paint, List<Point> points) {
-    var path = MonotoneX.initPath(points);
+    //var path = MonotoneX.initPath(points);
+    final path = Path()
+      ..moveTo(points.first.x.toDouble(), points.first.y.toDouble());
+    MonotoneX.addCurve(path, points);
     canvas.drawPath(path, paint);
   }
 

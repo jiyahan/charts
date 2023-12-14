@@ -111,7 +111,8 @@ abstract class ChartCanvas {
       Rectangle<num>? clipBounds,
       Color? fill,
       Color? stroke,
-      double? strokeWidthPx});
+      double? strokeWidthPx,
+      bool? smoothLine});
 
   /// Renders a simple rectangle.
   ///

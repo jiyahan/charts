@@ -122,7 +122,8 @@ class ChartCanvas implements common.ChartCanvas {
       Rectangle<num>? clipBounds,
       common.Color? fill,
       common.Color? stroke,
-      double? strokeWidthPx}) {
+      double? strokeWidthPx,
+      bool? smoothLine}) {
     PolygonPainter.draw(
         canvas: canvas,
         paint: _paint,
@@ -130,7 +131,8 @@ class ChartCanvas implements common.ChartCanvas {
         clipBounds: clipBounds,
         fill: fill,
         stroke: stroke,
-        strokeWidthPx: strokeWidthPx);
+        strokeWidthPx: strokeWidthPx,
+        smoothLine: smoothLine);
   }
 
   /// Creates a bottom to top gradient that transitions [fill] to transparent.

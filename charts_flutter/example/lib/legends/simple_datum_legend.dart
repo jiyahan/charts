@@ -71,7 +71,8 @@ class SimpleDatumLegend extends StatelessWidget {
       animate: animate,
       // Add the series legend behavior to the chart to turn on series legends.
       // By default the legend will display above the chart.
-      behaviors: [new charts.DatumLegend()],
+      ///TODO
+      //behaviors: [new charts.DatumLegend()],
     );
   }
 
