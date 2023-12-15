@@ -68,7 +68,43 @@ class SimpleLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new charts.LineChart(seriesList, animate: animate);
+    return new charts.LineChart(
+      seriesList,
+      animate: animate,
+      defaultRenderer: charts.LineRendererConfig(
+        // 折线图绘制的配置
+        includeArea: true,
+        includePoints: true,
+        includeLine: true,
+        stacked: false,
+        strokeWidthPx: 1.0,
+      ),
+      domainAxis: charts.NumericAxisSpec(
+        // 主轴的配置
+        // tickFormatterSpec:
+        //     charts.DomainFormatterSpec(dateRange), // tick 值的格式化，这里把 num 转换成 String
+        renderSpec: charts.SmallTickRendererSpec(
+          // 主轴绘制的配置
+          tickLengthPx: 3, // 刻度标识突出的长度
+          labelOffsetFromAxisPx: 5, // 刻度文字距离轴线的位移
+          // labelStyle: charts.TextStyleSpec(
+          //   // 刻度文字的样式
+          //   //color: ChartUtil.getChartColor(HColors.lightGrey),
+          //   //fontSize: HFontSizes.smaller.toInt(),
+          // ),
+          // axisLineStyle: charts.LineStyleSpec(
+          //   // 轴线的样式
+          //   color: Color.fromARGB(a, r, g, b),
+          // ),
+        ),
+        tickProviderSpec: charts.BasicNumericTickProviderSpec(
+          // 轴线刻度配置
+          zeroBound: false,
+          dataIsInWholeNumbers: false,
+          desiredTickCount: seriesList.length, // 期望显示几个刻度
+        ),
+      ),
+    );
   }
 
   /// Create one series with sample hard coded data.
